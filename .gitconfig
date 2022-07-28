@@ -1,0 +1,14 @@
+[user]
+	name = Kieran Smith
+	email = kieran.smith@itv.com
+[core]
+	excludesfile = ~/.dotfiles/.gitignore
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true
+[push]
+	default = current

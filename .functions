@@ -1,0 +1,58 @@
+function dockershell() {
+    docker run --rm -i -t --entrypoint=/bin/bash "$@"
+}
+
+function dockershellsh() {
+    docker run --rm -i -t --entrypoint=/bin/sh "$@"
+}
+
+function dockershellhere() {
+    dirname=${PWD##*/}
+    docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
+}
+
+function dockershellshhere() {
+    docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
+}
+
+account() {
+  local input=""
+
+  if [[ -p /dev/stdin ]]; then
+    input="$(cat -)"
+  else
+    input="${@}"
+  fi
+
+  if [[ -z "${input}" ]]; then
+    return 1
+  fi
+
+  declare -A accounts
+  accounts[bar-dev]=479365477541
+  accounts[bar-prd]=567798686067
+  accounts[commercial-dev]=449593837388
+  accounts[commercial-prd]=198885486700
+  accounts[dataplatform-dev]=271056079435
+  accounts[dataplatform-prd]=734779693992
+  accounts[platformspt-dev]=140546662745
+  accounts[platformspt-prd]=820651804328
+  accounts[viewer-dev]=862281135524
+  accounts[viewer-prd]=998530685550
+  accounts[viewersecure-dev]=252426845114
+  accounts[security-dev]=908694203676
+  accounts[security-prd]=731764858511
+
+
+  for key val in "${(@kv)accounts}"; do
+    if [[ "${input}" == "${val}" ]]
+    then
+      echo "$key"
+      break
+    elif [[ "${input}" == "${key}" ]]
+    then
+      echo "$val"
+      break
+    fi
+  done
+}

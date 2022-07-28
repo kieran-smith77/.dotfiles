@@ -1,0 +1,5 @@
+export PATH=$PATH":/usr/local/homebrew/bin:/usr/local/sbin"
+export ZSH="/Users/kiersmi1/.oh-my-zsh"
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+export EDITOR='nano'
+# export ARCHFLAGS="-arch x86_64"
