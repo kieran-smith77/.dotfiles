@@ -4,23 +4,23 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-   aws
    aliases
-   z
-   git
-   zsh-autosuggestions
-   zsh-syntax-highlighting
-   per-directory-history
+   aws
+   catimg
+   colorize
    copybuffer
    copyfile
    copypath
+   git
    macos
+   per-directory-history
+   python
+   ripgrep
    terraform
    thefuck
-   ripgrep
-   python
-   catimg
-   colorize
+   z
+   zsh-autosuggestions
+   zsh-syntax-highlighting
 )
 
 source ~/.dotfiles/.alias
