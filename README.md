@@ -3,7 +3,7 @@
 ## Install
 
     git clone git@github.com:kieran-smith-itv/.dotfiles.git ~/.dotfiles
-    ~/.dotfiles/install.sh
+    ~/.dotfiles/INSTALL
 
 ## Plugins
  - [aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aliases)
