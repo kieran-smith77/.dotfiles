@@ -2,5 +2,5 @@
 
 ## Install
 
-    git clone git@github.com:mikecarr2/.dotfiles.git ~/.dotfiles
+    git clone git@github.com:kieran-smith-itv/.dotfiles.git ~/.dotfiles
     ~/.dotfiles/install.sh
