@@ -4,3 +4,4 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export EDITOR='nano'
 export GPG_TTY=$(tty)
 # export ARCHFLAGS="-arch x86_64"
+export TFENV_ARCH=amd64
