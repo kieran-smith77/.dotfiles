@@ -22,6 +22,7 @@ function lazygit() {
 }
 
 function ipinfo() {
+
   local input=""
   if [[ -p /dev/stdin ]]; then
     input=$(cat -)
@@ -31,5 +32,14 @@ function ipinfo() {
   if [[ -z "$input" ]]; then
     input=""
   fi
-  curl -s "ipinfo.io/${input}?token=${ipinfo_token}" | jq -r .
+  local token=$(get_password ipinfo)
+  curl -s "ipinfo.io/${input}?token=${token}" | jq -r .
+}
+
+function get_secret {
+  bw get item "$1" --session "$BW_SESSION"
+}
+
+function get_password {
+  get_secret "$1" | jq -r ".login.password"
 }

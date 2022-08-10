@@ -31,3 +31,11 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(rbenv init - zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Bitwarden
+if [ -f "/usr/local/bin/bw" ]; then
+   if [ $(bw status | jq .status) = "\"unauthenticated\"" ]; then
+      echo "Logging in to Bitwarden"
+      export BW_SESSION=$(bw login kieran.smith@itv.com --raw) 
+   fi
+fi
