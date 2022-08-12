@@ -1,8 +1,9 @@
-alias ls="exa"
-alias cat="ccat"
-alias hex="python3 /Users/kiersmi1/tools/utils/hexconvert.py"
-alias brow="arch --x86_64 /usr/local/Homebrew/bin/brew"
-alias lint="docker run --rm -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v $(PWD):/tmp/lint github/super-linter"
-alias bwu="export BW_SESSION=$(bw unlock --raw)"
-alias bwl="unset BW_SESSION"
-alias lg="lazygit"
+alias ls='exa'
+alias cat='ccat'
+alias hex='python3 /Users/kiersmi1/tools/utils/hexconvert.py'
+alias brow='arch --x86_64 /usr/local/Homebrew/bin/brew'
+alias lint='docker run --rm -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v $(PWD):/tmp/lint github/super-linter'
+alias bwu='export BW_SESSION=$(bw unlock --raw)'
+alias bwl='unset BW_SESSION'
+alias lg='lazygit'
+alias resource='source ~/.zshrc'
