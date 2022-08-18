@@ -39,3 +39,39 @@ if [ -f "/usr/local/bin/bw" ]; then
       export BW_SESSION=$(bw login kieran.smith@itv.com --raw) 
    fi
 fi
+
+autoload -Uz +X compinit && compinit
+autoload -Uz +X bashcompinit && bashcompinit
+
+# BEGIN_AWS_SSO_CLI
+
+__aws_sso_profile_complete() {
+     local _args=${AWS_SSO_HELPER_ARGS:- -L error}
+    _multi_parts : "($(/opt/homebrew/bin/aws-sso list --csv $_args Profile))"
+}
+
+aws-sso-profile() {
+    local _args=${AWS_SSO_HELPER_ARGS:- -L error}
+    if [ -n "$AWS_PROFILE" ]; then
+        echo "Unable to assume a role while AWS_PROFILE is set"
+        return 1
+    fi
+    eval $(/opt/homebrew/bin/aws-sso $_args eval -p "$1")
+    if [ "$AWS_SSO_PROFILE" != "$1" ]; then
+        return 1
+    fi
+}
+
+aws-sso-clear() {
+    local _args=${AWS_SSO_HELPER_ARGS:- -L error}
+    if [ -z "$AWS_SSO_PROFILE" ]; then
+        echo "AWS_SSO_PROFILE is not set"
+        return 1
+    fi
+    eval $(/opt/homebrew/bin/aws-sso -sso eval $_args -c)
+}
+
+compdef __aws_sso_profile_complete aws-sso-profile
+complete -C /opt/homebrew/bin/aws-sso aws-sso
+
+# END_AWS_SSO_CLI

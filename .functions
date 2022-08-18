@@ -22,7 +22,9 @@ function lazygit() {
 }
 
 function ipinfo() {
-
+  if [ $(bw status | jq -r .status) != "unlocked" ]; then
+    bwu
+  fi
   local input=""
   if [[ -p /dev/stdin ]]; then
     input=$(cat -)
