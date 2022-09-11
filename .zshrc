@@ -26,7 +26,6 @@ plugins=(
 source ~/.dotfiles/.alias
 source ~/.dotfiles/.envvars
 source ~/.dotfiles/.functions
-source ~/.cyber-dotfiles/.alias
 source $ZSH/oh-my-zsh.sh
 
 eval "$(rbenv init - zsh)"
@@ -75,3 +74,14 @@ compdef __aws_sso_profile_complete aws-sso-profile
 complete -C /opt/homebrew/bin/aws-sso aws-sso
 
 # END_AWS_SSO_CLI
+
+if ! grep 'pam_tid.so' -q /etc/pam.d/sudo;
+then
+    echo "TouchID PAM module removed during update. Enter password to restore"
+    sudo sed -i '' '3i\
+auth       sufficient     pam_tid.so
+    ' /etc/pam.d/sudo
+    sudo -k
+fi
+source ~/.cyber-dotfiles/.alias
+
