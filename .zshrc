@@ -1,7 +1,8 @@
 ZSH_THEME="af-magic"
-DISABLE_UPDATE_PROMPT="true"
+# DISABLE_UPDATE_PROMPT="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
+
 
 plugins=(
    aliases
@@ -23,10 +24,14 @@ plugins=(
    zsh-syntax-highlighting
 )
 
+
 source ~/.dotfiles/.alias
 source ~/.dotfiles/.envvars
 source ~/.dotfiles/.functions
 source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
+source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 
 eval "$(rbenv init - zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

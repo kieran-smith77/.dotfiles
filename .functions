@@ -45,3 +45,23 @@ function get_secret {
 function get_password {
   get_secret "$1" | jq -r ".login.password"
 }
+
+function select_merge {
+  BRANCH=$1
+  DOMAIN=$2
+
+  git merge --no-ff --no-commit $BRANCH
+
+  DPs=$(ls data-products)
+
+  for DP in $DPs; do
+      CHECKDOMAIN=$(rg ^domain data-products/$DP/env | cut -d '"' -f2)
+      if [[ $CHECKDOMAIN != $DOMAIN ]]; then
+          git checkout HEAD data-products/$DP/main.tf
+      fi
+  done
+}
+
+function gci {
+  git clone git@github.com:ITV/$1
+}
