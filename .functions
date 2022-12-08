@@ -65,3 +65,14 @@ function select_merge {
 function gci {
   git clone git@github.com:ITV/$1
 }
+
+function m1-install {
+  m1-terraform-provider-helper install $1 -v $2 --custom-build-command "go mod vendor && make fmt && make build"
+  
+  REGISTRY=$(echo $1 | cut -d "/" -f 1)
+  PROVIDER=$(echo $1 | cut -d "/" -f 2)
+  VERSION=$(echo $2 | sed -e "s/^v//")
+
+  mkdir -p ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
+  cp ~/.terraform.d/plugins/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/* ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
+}
