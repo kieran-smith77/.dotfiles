@@ -17,8 +17,15 @@ function dockershellshhere() {
 
 function lazygit() {
     git add -A
-    git commit -m "$1"
-    git push
+    git --no-pager diff --staged
+    echo "Do you wish to continue? [y/n]"
+    read -k 1 cont
+    echo
+    if [ "$cont" = "y" ]; then
+      git commit -m "$1"
+      git push
+    fi
+
 }
 
 function ipinfo() {
