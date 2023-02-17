@@ -5,8 +5,8 @@
 # git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
 
 echo "Creating symlinks..."
-ln -sfv ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -sfv ~/.dotfiles/.zshrc ~/.zshrc
+ln -sfv ~/.dotfiles/gitconfig ~/.gitconfig
+ln -sfv ~/.dotfiles/zshrc ~/.zshrc
 
 # echo "Downloading Cyber Dotfiles"
 # git clone https://github.com/ITV/.cyber-dotfiles.git ~/.cyber-dotfiles

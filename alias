@@ -17,3 +17,6 @@ alias kics='docker run --rm -t -v $(pwd):/path checkmarx/kics:v1.6.7 scan -p /pa
 alias kic='docker run --rm -t -v $(pwd):/path checkmarx/kics:v1.6.7 scan'
 alias cdi='cd ~/itv'
 alias docker-rstrt='killall Docker & killall docker & killall com.docker.backend & sleep 10 && open /Applications/Docker.app'
+alias start-zscaler="open -a /Applications/Zscaler/Zscaler.app --hide; sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl load {} \;"
+alias kill-zscaler="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload {} \;;sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl unload {} \;"
+alias tfdoc="terraform-docs  markdown table --output-file README.md --output-mode inject ."

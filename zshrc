@@ -26,9 +26,9 @@ plugins=(
 )
 
 
-source ~/.dotfiles/.alias
-source ~/.dotfiles/.envvars
-source ~/.dotfiles/.functions
+source ~/.dotfiles/alias
+source ~/.dotfiles/envvars
+source ~/.dotfiles/functions
 source $ZSH/oh-my-zsh.sh
 # source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
@@ -89,4 +89,4 @@ auth       sufficient     pam_tid.so
     sudo -k
 fi
 source ~/.cyber-dotfiles/.alias
-
+source /Users/kiersmi1/.cyber-dotfiles/.alias

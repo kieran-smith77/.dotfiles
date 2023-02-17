@@ -16,15 +16,9 @@ function dockershellshhere() {
 }
 
 function lazygit() {
-    git add -A
-    git --no-pager diff --staged
-    echo "Do you wish to continue? [y/n]"
-    read -k 1 cont
-    echo
-    if [ "$cont" = "y" ]; then
-      git commit -m "$1"
-      git push
-    fi
+    git add -p
+    git commit -m "$1"
+    git push
 }
 
 function ipinfo() {
@@ -81,4 +75,8 @@ function m1-install {
 
   mkdir -p ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
   cp ~/.terraform.d/plugins/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/* ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
+}
+
+function clogin {
+ ~/.dotfiles/firefoxcontainer.sh -n ${1} --circle "$(aws-vault login -s ${1})"
 }
