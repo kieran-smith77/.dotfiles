@@ -6,7 +6,6 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
    aliases
-   asdf
    aws
    catimg
    colorize

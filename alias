@@ -1,7 +1,6 @@
 alias ls='exa'
 alias cat='ccat'
 alias hex='python3 /Users/kiersmi1/tools/utils/hexconvert.py'
-alias brow='arch --x86_64 /usr/local/Homebrew/bin/brew'
 alias lint='docker run --rm -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v $(PWD):/tmp/lint github/super-linter'
 alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='unset BW_SESSION'
@@ -20,3 +19,5 @@ alias docker-rstrt='killall Docker & killall docker & killall com.docker.backend
 alias start-zscaler="open -a /Applications/Zscaler/Zscaler.app --hide; sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl load {} \;"
 alias kill-zscaler="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload {} \;;sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl unload {} \;"
 alias tfdoc="terraform-docs  markdown table --output-file README.md --output-mode inject ."
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`/bin/cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias mtcommit='git commit --allow-empty -m "Empty-Commit" && git push'

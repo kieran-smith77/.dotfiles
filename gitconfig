@@ -16,3 +16,21 @@
 	autoSetupRemote = true
 [commit]
 	gpgsign = true
+[core]
+	pager = diff-so-fancy
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[diff]
+  meta       = "yellow"
+  frag       = "magenta bold"
+  commit     = "yellow bold"
+  old        = "red bold"
+  new        = "green bold"
+  whitespace = "red reverse"
+[diff-highlight]
+  oldNormal    = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal    = "green bold"
+  newHighlight = "green bold 22"
+[diff-so-fancy]
+	rulerWidth = 47

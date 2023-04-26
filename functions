@@ -16,6 +16,7 @@ function dockershellshhere() {
 }
 
 function lazygit() {
+    git add -N .
     git add -p
     git commit -m "$1"
     git push

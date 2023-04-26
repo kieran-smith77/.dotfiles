@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 usage() {
 	app=$(basename $0)
 	printf "$app - open URL in a specific container in Firefox.\n\n"
@@ -43,7 +39,6 @@ assertRequired() {
 	fi
 }
 
-# code from: https://stackoverflow.com/questions/296536/how-to-urlencode-data-for-curl-command
 urlencode() {
   local string="${1}"
   local strlen=${#string}
@@ -170,4 +165,4 @@ then
 	FULL_URL="${FULL_URL}&signature=${SIGNATURE}"
 fi
 
-$FIREFOX $FIREFOX_ARGS "$FULL_URL"
+$FIREFOX $FIREFOX_ARGS "$FULL_URL" & disown
