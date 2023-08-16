@@ -34,9 +34,9 @@ function lazygit() {
   else
     git commit -m "$MESSAGE"
   fi
-
-
+  if [ $? -eq 0 ]; then
     git push
+  fi
 }
 
 function ipinfo() {
