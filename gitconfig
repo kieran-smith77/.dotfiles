@@ -34,3 +34,5 @@
   newHighlight = "green bold 22"
 [diff-so-fancy]
 	rulerWidth = 47
+[credential]
+	helper = manager

@@ -21,3 +21,5 @@ alias kill-zscaler="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl
 alias tfdoc="terraform-docs  markdown table --output-file README.md --output-mode inject ."
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`/bin/cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias mtcommit='git commit --allow-empty -m "Empty-Commit" && git push'
+alias calc='bc'
+alias assume="source assume"

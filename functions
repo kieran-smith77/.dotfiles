@@ -16,9 +16,26 @@ function dockershellshhere() {
 }
 
 function lazygit() {
-    git add -N .
-    git add -p
-    git commit -m "$1"
+  NOVERIFY=false
+  while getopts "nm:" opt; do
+    case $opt in
+      n)
+        NOVERIFY=true
+        ;;
+      m)
+        MESSAGE=$OPTARG
+        ;;
+    esac
+  done
+  git add -N .
+  git add -p
+  if $NOVERIFY; then
+    git commit -n -m "$MESSAGE"
+  else
+    git commit -m "$MESSAGE"
+  fi
+
+
     git push
 }
 
@@ -39,15 +56,15 @@ function ipinfo() {
   curl -s "ipinfo.io/${input}?token=${token}" | jq -r .
 }
 
-function get_secret {
+function get_secret() {
   bw get item "$1" --session "$BW_SESSION"
 }
 
-function get_password {
+function get_password() {
   get_secret "$1" | jq -r ".login.password"
 }
 
-function select_merge {
+function select_merge() {
   BRANCH=$1
   DOMAIN=$2
 
@@ -63,11 +80,11 @@ function select_merge {
   done
 }
 
-function gci {
+function gci() {
   git clone git@github.com:ITV/$1
 }
 
-function m1-install {
+function m1-install() {
   m1-terraform-provider-helper install $1 -v $2 --custom-build-command "go mod vendor && make fmt && make build"
   
   REGISTRY=$(echo $1 | cut -d "/" -f 1)
@@ -76,8 +93,4 @@ function m1-install {
 
   mkdir -p ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
   cp ~/.terraform.d/plugins/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/* ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
-}
-
-function clogin {
- ~/.dotfiles/firefoxcontainer.sh -n ${1} --circle "$(aws-vault login -s ${1})"
 }
