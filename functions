@@ -94,3 +94,22 @@ function m1-install() {
   mkdir -p ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
   cp ~/.terraform.d/plugins/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/* ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
 }
+
+function audit-aws() {
+  account_id=$1
+  re='^[0-9 ]+$'
+  cst_response=$(cst account "$account_id")
+
+  if [[ $account_id =~ $re ]]
+  then
+    account_aliases="$cst_response"
+  else
+    account_aliases=$(cst account $(echo "$cst_response" | tr '\n' ' '))
+  fi
+
+  while IFS= read -r account_alias; do
+    assume -c "$account_alias":itv-cyber-security-audit -s gd
+  done <<< "$account_aliases"
+
+
+}

@@ -23,3 +23,4 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`/bin/cat $HOME/.rang
 alias mtcommit='git commit --allow-empty -m "Empty-Commit" && git push'
 alias calc='bc'
 alias assume="source assume"
+alias finder="open $PWD"
