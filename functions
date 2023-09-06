@@ -1,30 +1,30 @@
 function dockershell() {
-    docker run --rm -i -t --entrypoint=/bin/bash "$@"
+  docker run --rm -i -t --entrypoint=/bin/bash "$@"
 }
 
 function dockershellsh() {
-    docker run --rm -i -t --entrypoint=/bin/sh "$@"
+  docker run --rm -i -t --entrypoint=/bin/sh "$@"
 }
 
 function dockershellhere() {
-    dirname=${PWD##*/}
-    docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
+  dirname=${PWD##*/}
+  docker run --rm -it --entrypoint=/bin/bash -v $(pwd):/${dirname} -w /${dirname} "$@"
 }
 
 function dockershellshhere() {
-    docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
+  docker run --rm -it --entrypoint=/bin/sh -v $(pwd):/${dirname} -w /${dirname} "$@"
 }
 
 function lazygit() {
   NOVERIFY=false
   while getopts "nm:" opt; do
     case $opt in
-      n)
-        NOVERIFY=true
-        ;;
-      m)
-        MESSAGE=$OPTARG
-        ;;
+    n)
+      NOVERIFY=true
+      ;;
+    m)
+      MESSAGE=$OPTARG
+      ;;
     esac
   done
   git add -N .
@@ -73,10 +73,10 @@ function select_merge() {
   DPs=$(ls data-products)
 
   for DP in $DPs; do
-      CHECKDOMAIN=$(rg ^domain data-products/$DP/env | cut -d '"' -f2)
-      if [[ $CHECKDOMAIN != $DOMAIN ]]; then
-          git checkout HEAD data-products/$DP/main.tf
-      fi
+    CHECKDOMAIN=$(rg ^domain data-products/$DP/env | cut -d '"' -f2)
+    if [[ $CHECKDOMAIN != $DOMAIN ]]; then
+      git checkout HEAD data-products/$DP/main.tf
+    fi
   done
 }
 
@@ -86,7 +86,7 @@ function gci() {
 
 function m1-install() {
   m1-terraform-provider-helper install $1 -v $2 --custom-build-command "go mod vendor && make fmt && make build"
-  
+
   REGISTRY=$(echo $1 | cut -d "/" -f 1)
   PROVIDER=$(echo $1 | cut -d "/" -f 2)
   VERSION=$(echo $2 | sed -e "s/^v//")
@@ -100,8 +100,7 @@ function audit-aws() {
   re='^[0-9 ]+$'
   cst_response=$(cst account "$account_id")
 
-  if [[ $account_id =~ $re ]]
-  then
+  if [[ $account_id =~ $re ]]; then
     account_aliases="$cst_response"
   else
     account_aliases=$(cst account $(echo "$cst_response" | tr '\n' ' '))
@@ -109,7 +108,5 @@ function audit-aws() {
 
   while IFS= read -r account_alias; do
     assume -c "$account_alias":itv-cyber-security-audit -s gd
-  done <<< "$account_aliases"
-
-
+  done <<<"$account_aliases"
 }
