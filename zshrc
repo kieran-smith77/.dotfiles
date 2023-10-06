@@ -87,5 +87,5 @@ auth       sufficient     pam_tid.so
     ' /etc/pam.d/sudo
     sudo -k
 fi
-source /Users/kiersmi1/.cyber-dotfiles/.alias
-source /Users/kiersmi1/.cyber-dotfiles/.envvars
+source ${HOME}/.cyber-dotfiles/.alias
+source ${HOME}/.cyber-dotfiles/.envvars
