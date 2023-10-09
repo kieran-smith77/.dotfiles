@@ -110,3 +110,29 @@ function audit-aws() {
     assume -c "$account_alias":itv-cyber-security-audit -s gd
   done <<<"$account_aliases"
 }
+
+function query-data-accounts() {
+  setopt SH_WORD_SPLIT
+  prefix="itv-data-"
+  command=$1
+
+  output=$(jq -n '{}')
+
+  account_ids=$(cst account "$prefix")
+  account_names=$(cst account $account_ids)
+
+  for i in $account_names; do
+    role_name=${i#"$prefix"}-pe
+    result=$(aws-vault exec $role_name -- aws $command --output json 2>/dev/null)
+    if [[ $? -ne 0 ]]; then
+      result={}
+    fi
+
+    account_name=$i
+    json=$(jq -n --arg account_name $account_name --argjson result "$result" '{$account_name: $result}')
+    output=$(jq -n "$output + $json")
+  done
+  
+  unsetopt SH_WORD_SPLIT
+  echo "$output"
+}
