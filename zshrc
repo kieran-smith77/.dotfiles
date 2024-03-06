@@ -89,3 +89,5 @@ auth       sufficient     pam_tid.so
 fi
 source ${HOME}/.cyber-dotfiles/.alias
 source ${HOME}/.cyber-dotfiles/.envvars
+source /Users/kiersmi1/.cyber-dotfiles/.alias
+source /Users/kiersmi1/.cyber-dotfiles/.envvars

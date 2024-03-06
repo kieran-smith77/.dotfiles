@@ -82,6 +82,7 @@ function select_merge() {
 
 function gci() {
   git clone git@github.com:ITV/$1
+  cd "$1"
 }
 
 function m1-install() {
@@ -135,4 +136,11 @@ function query-data-accounts() {
   
   unsetopt SH_WORD_SPLIT
   echo "$output"
+}
+
+function verify-databricks-api-key() {
+  DATABRICKS_HOST=$1
+  DATABRICKS_TOKEN=$2
+
+  curl -s --request GET "https://${DATABRICKS_HOST}/api/2.0/preview/scim/v2/Me" --header "Authorization: Bearer ${DATABRICKS_TOKEN}" | jq '.'
 }
