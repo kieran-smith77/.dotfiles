@@ -8,3 +8,4 @@ brew install zsh-autosuggestions zsh-syntax-highlighting awscli thefuck ripgrep 
 echo "Creating symlinks..."
 ln -sfv ~/.dotfiles/gitconfig ~/.gitconfig
 ln -sfv ~/.dotfiles/zshrc ~/.zshrc
+ln -sfv ~/.dotfiles/af-magic.zsh-theme ~/.oh-my-zsh/themes/af-magic.zsh-theme
