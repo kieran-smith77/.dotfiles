@@ -1,4 +1,4 @@
-alias ls='exa'
+alias ls='eza'
 alias cat='ccat'
 alias hex='python3 /Users/kiersmi1/tools/utils/hexconvert.py'
 alias lint='docker run --rm -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v $(PWD):/tmp/lint github/super-linter'
@@ -6,24 +6,24 @@ alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='unset BW_SESSION'
 alias lg='lazygit'
 alias resource='source ~/.zshrc'
-alias tfiplan='rtfi && dome -p'
 alias gopen='gh browse .'
-alias tbi='aws-vault exec bar-dev-pe bash ./scripts/init.sh test-bar dev bar'
-alias tbp='aws-vault exec bar-dev-pe bash ./scripts/plan.sh test-bar dev'
-alias tba='aws-vault exec bar-dev-pe bash ./scripts/apply.sh test-bar dev'
-alias tbau='aws-vault exec bar-dev-root bash ./scripts/apply.sh test-bar dev'
 alias kics='docker run --rm -t -v $(pwd):/path checkmarx/kics:latest scan -p /path  -e "*/terraform/vendor, */.terraform" -o "/tmp"'
 alias kic='docker run --rm -t -v $(pwd):/path checkmarx/kics:latest scan'
 alias cdi='cd ~/itv'
 alias docker-rstrt='killall Docker & killall docker & killall com.docker.backend & sleep 10 && open /Applications/Docker.app'
-alias start-zscaler="open -a /Applications/Zscaler/Zscaler.app --hide; sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl load {} \;"
-alias kill-zscaler="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload {} \;;sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl unload {} \;"
+alias sz="open -a /Applications/Zscaler/Zscaler.app --hide; sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl load {} \;"
+alias kz="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload {} \;;sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl unload {} \;"
 alias tfdoc="terraform-docs  markdown table --output-file README.md --output-mode inject ."
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`/bin/cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias mtcommit='git commit --allow-empty -m "Empty-Commit" && git push'
+alias mtcommit='git commit --allow-empty -m "Empty Commit" && git push'
 alias calc='bc'
-alias assume="source assume"
 alias finder="open $PWD"
 alias scratch="code ~/coding/scratch"
 alias run-gitleaks="gitleaks detect -v -c ~/itv/security-infra-services/tufnell/prd/prd/gitleaks.toml"
 alias pyvenv="python3 -m venv .venv && source .venv/bin/activate"
+alias pyzscaler='export REQUESTS_CA_BUNDLE=~/.zscaler/zscalerCA.pem'
+alias use-aws-cluster='rm /Users/kiersmi1/.kube/config && cluster=$(aws eks list-clusters | jq -r ".clusters[0]") && aws eks --region $AWS_REGION update-kubeconfig --name $cluster'
+alias stash-pull='git stash && git pull && git stash pop'
+alias set-gh-token='export GITHUB_TOKEN=$(gh auth token)'
+alias tf='terraform'
+alias tg='terragrunt'

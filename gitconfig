@@ -17,7 +17,7 @@
 [commit]
 	gpgsign = true
 [core]
-	pager = diff-so-fancy
+	pager = diff-so-fancy | less --tabs=4 -RF
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [diff]
@@ -41,5 +41,6 @@
 	repo = /Users/kiersmi1/itv/data-product-onboarding-wrapper
 [init]
 	defaultBranch = main
+	templateDir = /Users/kiersmi1/.git-template
 [gpg]
 	format = ssh

@@ -81,8 +81,8 @@ function select_merge() {
 }
 
 function gci() {
-  git clone git@github.com:ITV/$1
-  cd "$1"
+  git clone git@github.com:ITV/$1 ~/itv/"$1"
+  cd ~/itv/"$1"
 }
 
 function m1-install() {
@@ -133,7 +133,7 @@ function query-data-accounts() {
     json=$(jq -n --arg account_name $account_name --argjson result "$result" '{$account_name: $result}')
     output=$(jq -n "$output + $json")
   done
-  
+
   unsetopt SH_WORD_SPLIT
   echo "$output"
 }
@@ -143,4 +143,28 @@ function verify-databricks-api-key() {
   DATABRICKS_TOKEN=$2
 
   curl -s --request GET "https://${DATABRICKS_HOST}/api/2.0/preview/scim/v2/Me" --header "Authorization: Bearer ${DATABRICKS_TOKEN}" | jq '.'
+}
+
+function check_yaml_changes() {
+  input=$(cat)
+  echo $input
+  # Extract the contents between - <<-EOT and + <<-EOT blocks
+  old_block=$(sed -n '/- <<-EOT/,/EOT/p' <<<"$input" | sed '1d;$d')
+  new_block=$(sed -n '/+ <<-EOT/,/EOT/p' <<<"$input" | sed '1d;$d')
+
+  # Split the blocks into lines
+  old_lines=(${old_block/$'\n'/ })
+  new_lines=(${new_block/$'\n'/ })
+
+  # Compare the lines and print the differences
+  for ((i = 0; i < ${#old_lines[@]}; i++)); do
+    if [ "${old_lines[$i]}" != "${new_lines[$i]}" ]; then
+      if [ -n "${old_lines[$i]}" ]; then
+        echo "- ${old_lines[$i]}"
+      fi
+      if [ -n "${new_lines[$i]}" ]; then
+        echo "+ ${new_lines[$i]}"
+      fi
+    fi
+  done
 }
