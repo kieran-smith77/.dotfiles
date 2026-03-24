@@ -1,0 +1,49 @@
+# ── appearance ─────────────────────────────
+font-family = JetBrains Mono Nerd Font
+font-size = 13
+theme = Catppuccin Mocha
+background-opacity = 0.95
+window-padding-x = 10
+window-padding-y = 10
+
+
+# ── cursor ──────────────────────────────────
+cursor-style = block
+cursor-style-blink = true
+
+# ── shell integration ───────────────────────
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# ── quick terminal (quake mode) ─────────────
+keybind = global:ctrl+space=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-size = 40%
+quick-terminal-animation-duration = 0.15
+
+# ── scrollback ──────────────────────────────
+scrollback-limit = 10000
+
+# ── behaviour ───────────────────────────────
+confirm-close-surface = true
+mouse-hide-while-typing = false
+copy-on-select = clipboard
+focus-follows-mouse = false
+bold-is-bright = true
+
+# ── keybinds ────────────────────────────────
+keybind = cmd+shift+h=goto_split:left
+keybind = cmd+shift+l=goto_split:right
+keybind = cmd+shift+k=goto_split:top
+keybind = cmd+shift+j=goto_split:bottom
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+w=close_surface
+keybind = cmd+t=new_tab
+keybind = cmd+shift+[=previous_tab
+keybind = cmd+shift+]=next_tab
+
+# ── macos ─────────────────────────────────
+macos-option-as-alt = true
+window-inherit-working-directory = true
+macos-titlebar-style = transparent

@@ -9,3 +9,4 @@ echo "Creating symlinks..."
 ln -sfv ~/.dotfiles/gitconfig ~/.gitconfig
 ln -sfv ~/.dotfiles/zshrc ~/.zshrc
 ln -sfv ~/.dotfiles/af-magic.zsh-theme ~/.oh-my-zsh/themes/af-magic.zsh-theme
+ln -sfv ~/.dotfiles/ghostty ~/.config/ghostty/config
