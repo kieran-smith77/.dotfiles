@@ -20,7 +20,6 @@ plugins=(
     terraform
     thefuck
     z
-    zsh-syntax-highlighting
 )
 
 source ~/.dotfiles/alias
@@ -51,18 +50,14 @@ auth       sufficient     pam_tid.so
     sudo -k
 fi
 
-
-export PATH="$PATH:/Users/kiersmi1/.local/bin"
-
-eval "$(gh copilot alias -- zsh)"
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/kiersmi1/.docker/completions $fpath)
+fpath=(/Users/kieran/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/Kiersmi1/.docker/completions $fpath)
+fpath=(/Users/kieran/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions

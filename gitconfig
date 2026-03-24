@@ -1,7 +1,7 @@
 [user]
 	name = Kieran Smith
 	email = kieran.smith@itv.com
-	signingkey = /Users/kiersmi1/.ssh/id_ed25519
+	signingkey = /Users/kieran/.ssh/id_ed25519
 [core]
 	excludesfile = ~/.dotfiles/gitignore
 [filter "lfs"]
@@ -37,10 +37,10 @@
 [credential]
 	helper = manager
 [maintenance]
-	repo = /Users/kiersmi1/itv/security-infra-services
-	repo = /Users/kiersmi1/itv/data-product-onboarding-wrapper
+	repo = /Users/kieran/itv/security-infra-services
+	repo = /Users/kieran/itv/data-product-onboarding-wrapper
 [init]
 	defaultBranch = main
-	templateDir = /Users/kiersmi1/.git-template
+	templateDir = /Users/kieran/.git-template
 [gpg]
 	format = ssh

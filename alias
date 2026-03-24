@@ -1,6 +1,6 @@
 alias ls='eza'
 alias cat='ccat'
-alias hex='python3 /Users/kiersmi1/tools/utils/hexconvert.py'
+alias hex='python3 /Users/kieran/tools/utils/hexconvert.py'
 alias lint='docker run --rm -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v $(PWD):/tmp/lint github/super-linter'
 alias bwu='export BW_SESSION=$(bw unlock --raw)'
 alias bwl='unset BW_SESSION'
@@ -22,7 +22,7 @@ alias scratch="code ~/coding/scratch"
 alias run-gitleaks="gitleaks detect -v -c ~/itv/security-infra-services/tufnell/prd/prd/gitleaks.toml"
 alias pyvenv="python3 -m venv .venv && source .venv/bin/activate"
 alias pyzscaler='export REQUESTS_CA_BUNDLE=~/.zscaler/zscalerCA.pem'
-alias use-aws-cluster='rm /Users/kiersmi1/.kube/config && cluster=$(aws eks list-clusters | jq -r ".clusters[0]") && aws eks --region $AWS_REGION update-kubeconfig --name $cluster'
+alias use-aws-cluster='rm /Users/kieran/.kube/config && cluster=$(aws eks list-clusters | jq -r ".clusters[0]") && aws eks --region $AWS_REGION update-kubeconfig --name $cluster'
 alias stash-pull='git stash && git pull && git stash pop'
 alias set-gh-token='export GITHUB_TOKEN=$(gh auth token)'
 alias tf='terraform'
