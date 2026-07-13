@@ -27,7 +27,18 @@ function lazygit() {
       ;;
     esac
   done
-  git add -N .
+  local new_files
+  new_files=$(git ls-files --others --exclude-standard)
+  if [[ -n "$new_files" ]]; then
+    echo "New untracked files:"
+    while IFS= read -r file; do
+      echo -n "  Add '$file'? [y/N] "
+      read -r response < /dev/tty
+      if [[ "$response" =~ ^[Yy]$ ]]; then
+        git add "$file"
+      fi
+    done <<< "$new_files"
+  fi
   git add -p
   if $NOVERIFY; then
     git commit -n -m "$MESSAGE"
@@ -52,7 +63,7 @@ function ipinfo() {
   if [[ -z "$input" ]]; then
     input=""
   fi
-  local token=$(get_password ipinfo)
+  local token=$(bw get item ipinfo.io --session "$BW_SESSION" | jq -r ".fields[] | select(.name == \"API Key\") | .value")
   curl -s "ipinfo.io/${input}?token=${token}" | jq -r .
 }
 

@@ -20,10 +20,11 @@ alias calc='bc'
 alias finder="open $PWD"
 alias scratch="code ~/coding/scratch"
 alias run-gitleaks="gitleaks detect -v -c ~/itv/security-infra-services/tufnell/prd/prd/gitleaks.toml"
-alias pyvenv="python3 -m venv .venv && source .venv/bin/activate"
+alias pyvenv="python -m venv .venv && source .venv/bin/activate"
 alias pyzscaler='export REQUESTS_CA_BUNDLE=~/.zscaler/zscalerCA.pem'
-alias use-aws-cluster='rm /Users/kiersmi1/.kube/config && cluster=$(aws eks list-clusters | jq -r ".clusters[0]") && aws eks --region $AWS_REGION update-kubeconfig --name $cluster'
+alias use-aws-cluster='rm -f /Users/kiersmi1/.kube/config && cluster=$(aws eks list-clusters | jq -r ".clusters[0]") && aws eks --region $AWS_REGION update-kubeconfig --name $cluster'
 alias stash-pull='git stash && git pull && git stash pop'
 alias set-gh-token='export GITHUB_TOKEN=$(gh auth token)'
 alias tf='terraform'
 alias tg='terragrunt'
+alias ecr-login='aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 655028521085.dkr.ecr.$AWS_REGION.amazonaws.com'
