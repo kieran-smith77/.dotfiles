@@ -1,6 +1,6 @@
 # ── appearance ─────────────────────────────
 font-family = Comic Mono
-font-size = 13
+font-size = 16
 theme = Catppuccin Mocha
 background-opacity = 0.95
 window-padding-x = 10
