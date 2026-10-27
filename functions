@@ -91,11 +91,6 @@ function select_merge() {
   done
 }
 
-function gci() {
-  git clone git@github.com:ITV/$1 ~/itv/"$1"
-  cd ~/itv/"$1"
-}
-
 function m1-install() {
   m1-terraform-provider-helper install $1 -v $2 --custom-build-command "go mod vendor && make fmt && make build"
 
@@ -107,54 +102,6 @@ function m1-install() {
   cp ~/.terraform.d/plugins/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/* ~/.terraform.d/providercache_tf14on/$PROVIDER/$VERSION/registry.terraform.io/$REGISTRY/$PROVIDER/$VERSION/darwin_arm64/
 }
 
-function audit-aws() {
-  account_id=$1
-  re='^[0-9 ]+$'
-  cst_response=$(cst account "$account_id")
-
-  if [[ $account_id =~ $re ]]; then
-    account_aliases="$cst_response"
-  else
-    account_aliases=$(cst account $(echo "$cst_response" | tr '\n' ' '))
-  fi
-
-  while IFS= read -r account_alias; do
-    assume -c "$account_alias":itv-cyber-security-audit -s gd
-  done <<<"$account_aliases"
-}
-
-function query-data-accounts() {
-  setopt SH_WORD_SPLIT
-  prefix="itv-data-"
-  command=$1
-
-  output=$(jq -n '{}')
-
-  account_ids=$(cst account "$prefix")
-  account_names=$(cst account $account_ids)
-
-  for i in $account_names; do
-    role_name=${i#"$prefix"}-pe
-    result=$(aws-vault exec $role_name -- aws $command --output json 2>/dev/null)
-    if [[ $? -ne 0 ]]; then
-      result={}
-    fi
-
-    account_name=$i
-    json=$(jq -n --arg account_name $account_name --argjson result "$result" '{$account_name: $result}')
-    output=$(jq -n "$output + $json")
-  done
-
-  unsetopt SH_WORD_SPLIT
-  echo "$output"
-}
-
-function verify-databricks-api-key() {
-  DATABRICKS_HOST=$1
-  DATABRICKS_TOKEN=$2
-
-  curl -s --request GET "https://${DATABRICKS_HOST}/api/2.0/preview/scim/v2/Me" --header "Authorization: Bearer ${DATABRICKS_TOKEN}" | jq '.'
-}
 
 function check_yaml_changes() {
   input=$(cat)

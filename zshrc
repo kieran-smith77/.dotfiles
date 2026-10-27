@@ -32,14 +32,6 @@ source $ZSH/oh-my-zsh.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Bitwarden
-# if [ -f "/opt/homebrew/bin/bw" ]; then
-#     if [ $(bw status | jq .status) = "\"unauthenticated\"" ]; then
-#         echo "Logging in to Bitwarden"
-#         export BW_SESSION=$(bw login kieran.smith@itv.com --raw)
-#     fi
-# fi
-
 autoload -Uz +X compinit && compinit
 autoload -Uz +X bashcompinit && bashcompinit
 
@@ -52,17 +44,15 @@ auth       sufficient     pam_tid.so
 fi
 
 
-export PATH="$PATH:/Users/kiersmi1/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
-eval "$(gh copilot alias -- zsh)"
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/kiersmi1/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/Kiersmi1/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+eval "$(pyenv init -)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+
