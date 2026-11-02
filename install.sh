@@ -3,9 +3,10 @@
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-brew install zsh-autosuggestions zsh-syntax-highlighting awscli thefuck ripgrep catimg wget eza
+brew install zsh-autosuggestions zsh-syntax-highlighting awscli thefuck ripgrep catimg wget eza nano
 
 echo "Creating symlinks..."
 ln -sfv ~/.dotfiles/gitconfig ~/.gitconfig
 ln -sfv ~/.dotfiles/zshrc ~/.zshrc
+ln -sfv ~/.dotfiles/nanorc ~/.nanorc
 ln -sfv ~/.dotfiles/af-magic.zsh-theme ~/.oh-my-zsh/themes/af-magic.zsh-theme

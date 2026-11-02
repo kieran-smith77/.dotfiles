@@ -1,0 +1,30 @@
+# GNU nano (Homebrew). macOS's /usr/bin/nano is Pico and ignores this file.
+
+# iTerm sends Escape+b/f for Option+Left/Right.
+set afterends
+bind M-B prevword main
+bind M-F nextword main
+
+# Also support terminals that send modified arrow escape sequences.
+bind M-Left prevword main
+bind M-Right nextword main
+bind M-Up prevblock main
+bind M-Down nextblock main
+
+# Load the syntax definitions bundled with Homebrew nano (Apple Silicon).
+include "/opt/homebrew/share/nano/*.nanorc"
+
+# Optional settings -- uncomment the ones you want.
+# Show the current line and column in the status bar, without a number gutter.
+set constantshow
+set autoindent
+set tabsize 2
+set tabstospaces
+# set softwrap
+# set atblanks
+# set smarthome
+set mouse
+# set positionlog
+# set historylog
+# set backup
+# set indicator
