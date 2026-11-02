@@ -55,4 +55,8 @@ compinit
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+alias assume="source $(brew --prefix)/bin/assume"
 
+# AWS profiles managed by Granted
+export AWS_CONFIG_FILE="$HOME/.granted/aws-config"
+export AWS_DEFAULT_REGION="eu-west-1"

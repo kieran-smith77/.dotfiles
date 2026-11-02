@@ -1,7 +1,7 @@
 [user]
 	name = Kieran Smith
-	email = kieransmith@hollandandbarrett.com
-	signingkey = ~/.ssh/github
+	email = 6058542+kieran-smith77@users.noreply.github.com
+	signingkey = /Users/JamesSmith/.ssh/github
 [core]
 	excludesfile = ~/.dotfiles/gitignore
 [filter "lfs"]
